@@ -1,39 +1,57 @@
 {
   "name": "finanbank",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "1.0.0",
+  "description": "Backend API for FinanBANK using Fastify and Prisma.",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:generate": "npx prisma generate",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest run --coverage"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "keywords": [
+    "finances",
+    "banking",
+    "fastify",
+    "prisma",
+    "sqlite",
+    "backend"
+  ],
+  "author": "felipe",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.x",
+    "@fastify/formbody": "^7.x",
+    "@fastify/sensible": "^5.x",
+    "@prisma/client": "^5.x",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.x",
+    "fastify": "^4.x",
+    "jsonwebtoken": "^9.0.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20.x",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^1.6.1",
+    "prisma": "^5.x",
+    "supertest": "^6.3.4",
+    "ts-node": "^10.x",
+    "ts-node-dev": "^2.x",
+    "typescript": "^5.x",
+    "vitest": "^1.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liim44/finanBANK.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Liim44/finanBANK/issues"
+  },
+  "homepage": "https://github.com/Liim44/finanBANK#readme"
 }
