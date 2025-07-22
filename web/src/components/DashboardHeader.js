@@ -1,5 +1,5 @@
 import React from 'react';
-<DashboardHeader title="FinanBANK" />
+
 function DashboardHeader() {
  return (
   <div style={{ marginBottom: '20px' }}>

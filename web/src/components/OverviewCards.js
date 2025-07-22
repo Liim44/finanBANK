@@ -1,5 +1,5 @@
 import React from 'react';
- import {
+import {
   ArrowDown,
   ArrowUp,
   Coins,
@@ -21,7 +21,7 @@ import React from 'react';
   Tv,
   Shirt,
   Droplet,
- } from 'lucide-react';
+} from 'lucide-react';
 
  function OverviewCard({ title, value, description, type }) {
   let icon;

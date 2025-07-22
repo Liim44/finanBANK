@@ -1,5 +1,5 @@
 import React from 'react';
- import {
+import {
   ShoppingBasket,
   Utensils,
   Dumbbell,
@@ -18,7 +18,7 @@ import React from 'react';
   Tv,
   Shirt,
   Droplet,
- } from 'lucide-react';
+} from 'lucide-react';
 
  function CategoriesList({ categories }) {
   // Agrupar transações por categoria e somar os valores

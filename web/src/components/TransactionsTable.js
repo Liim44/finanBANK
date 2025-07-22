@@ -1,5 +1,5 @@
 import React from 'react';
- import { format } from 'date-fns';
+import { format } from 'date-fns';
 
  function TransactionsTable({ transactions }) {
   return (
