@@ -1,12 +1,63 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// prisma/schema.prisma
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  accounts  Account[]
+}
+
+model Account {
+  id        String      @id @default(uuid())
+  name      String
+  balance   Float       @default(0)
+  userId    String
+  bankId    String
+  user      User        @relation(fields: [userId], references: [id])
+  bank      Bank        @relation(fields: [bankId], references: [id])
+  transactions Transaction[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Transaction {
+  id        String   @id @default(uuid())
+  title     String
+  amount    Float
+  date      DateTime
+  type      String   // 'income' or 'expense'
+  accountId String
+  categoryId String?
+  account   Account  @relation(fields: [accountId], references: [id])
+  category  Category? @relation(fields: [categoryId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Bank {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  accounts  Account[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Category {
+  id        String      @id @default(uuid())
+  name      String      @unique
+  type      String      // 'income' or 'expense'
+  transactions Transaction[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
