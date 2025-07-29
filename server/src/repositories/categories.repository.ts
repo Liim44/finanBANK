@@ -3,9 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export class CategoryRepository {
-  async create(name: string) {
+  async create(name: string, type: string) {
     return prisma.category.create({
-      data: { name },
+      data: { name, type },
     });
   }
 
