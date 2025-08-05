@@ -1,4 +1,4 @@
-// src/server.ts (ou o arquivo que você usa para iniciar)
+
 import { buildApp } from './app';
 import { FastifyInstance } from 'fastify';
 

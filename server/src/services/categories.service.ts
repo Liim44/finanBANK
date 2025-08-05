@@ -7,14 +7,40 @@ export class CategoryService {
     this.categoryRepository = new CategoryRepository();
   }
 
-  async create(name: string) {
-    // Aqui você pode adicionar lógica de negócio, como verificar se a categoria já existe
+  async create(name: string, type: string) {
+    // verificar se a categoria já existe
     const existingCategory = await this.categoryRepository.findByName(name);
     if (existingCategory) {
       throw new Error('Categoria com este nome já existe.');
     }
-    return this.categoryRepository.create(name);
+    return this.categoryRepository.create(name, type);
   }
 
-  // ... Outros métodos de serviço (findAll, findById, update, delete)
-}
+  async findAll() {
+    return this.categoryRepository.findAll();
+  }
+
+  async findById(id: string) {
+    const category = await this.categoryRepository.findById(id);  
+    if (!category) {
+      throw new Error('Categoria não encontrada.');
+    }
+    return category;
+  }
+
+  async update(id: string, name: string, type: string) {
+    const existingCategory = await this.categoryRepository.findById(id);  
+    if (!existingCategory) {
+      throw new Error('Categoria não encontrada.');
+    } 
+    return this.categoryRepository.update(id, name, type);
+  } 
+  async delete(id: string) {
+    const existingCategory = await this.categoryRepository.findById(id);  
+    if (!existingCategory) {
+      throw new Error('Categoria não encontrada.');
+    } 
+      return this.categoryRepository.delete(id);
+    }
+  }
+  

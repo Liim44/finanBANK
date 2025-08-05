@@ -5,7 +5,7 @@ const categoryService = new CategoryService(); // Instância do seu serviço
 
 export async function createCategory(request: FastifyRequest, reply: FastifyReply) {
   try {
-    // Validação de entrada (pode ser feita com um schema Fastify ou manualmente)
+    
     const { name } = request.body as { name: string };
 
     if (!name) {
@@ -20,4 +20,3 @@ export async function createCategory(request: FastifyRequest, reply: FastifyRepl
   }
 }
 
-// ... Outros métodos do controlador (listCategories, getCategoryById, etc.)
